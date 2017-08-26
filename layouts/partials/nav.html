@@ -64,9 +64,9 @@
 
     <div class="avatar-container">
       <div class="avatar-img-border">
-        {{ if isset .Site.Params "logo" }}
+        {{ if (isset .Site.Params "logo") | or (isset .Params "logo") }}
           <a title="{{ .Site.Title }}" href="{{ "" | absLangURL }}">
-            <img class="avatar-img" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
+            <img class="avatar-img" src="{{ .Params.logo | default .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
           </a>
         {{ end }}
       </div>
